@@ -16,6 +16,11 @@ BANDS: list[dict] = [
         ],
     },
     {"id": 4, "name": "Wu-Tang Clan", "genre": "Hip-Hop"},
-    {"id": 5, "name": "The Kinks", "genre": "Rock"},
+    {
+        "id": 5,
+        "name": "Elvis Presley",
+        "genre": "Rock",
+        "albums": [{"title": "I Feel Lonesome Tonite", "release_date": "1955-05-27"}],
+    },
     {"id": 6, "name": "Slowdive", "genre": "Shoegaze"},
 ]
