@@ -1,18 +1,12 @@
 #  __________________
 #  Import LIBRARIES
 from fastapi import FastAPI, HTTPException
-from enum import Enum
+from pydantic import BaseModel
 
 #  Import FILES
 from data import BANDS
+from schemas import GenreURLChoices, Band
 #  __________________
-
-
-class GenreURLChoices(Enum):
-    ROCK = "rock"
-    ELECTRONIC = "electronic"
-    METAL = "metal"
-    HIP_HOP = "hip-hop"
 
 
 app = FastAPI()
@@ -24,16 +18,17 @@ async def index() -> dict[str, str]:
 
 
 @app.get("/bands")
-async def bands() -> list[dict]:
-    return BANDS
+async def bands() -> list[Band]:
+    # async def bands() -> list[dict]:
+    return [Band(**b) for b in BANDS]
+    # return BANDS
 
 
 @app.get("/bands/{band_id}")
-# @app.get("/bands/{band_id}", status_code=206)
-async def band(band_id: int) -> dict | None:
-    band: dict | None = next((b for b in BANDS if b["id"] == band_id), None)
+async def band(band_id: int) -> Band:
+    band: Band | None = next((Band(**b) for b in BANDS if b["id"] == band_id), None)
     if band is None:
-        #  Status code 404
+        #  Sttus code 404
         raise HTTPException(status_code=404, detail="Band not found!")
     return band
 
