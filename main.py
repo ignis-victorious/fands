@@ -8,13 +8,14 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-@app.get('/')
-async def root():
-    return {'This is':'Root'} 
+@app.get("/")
+async def index() -> dict[str, str]:
+    return {"This is": "root"}
 
 
-
-
+@app.get("/about")
+async def about() -> str:
+    return "What a lovely day"
 
 
 # def main():
