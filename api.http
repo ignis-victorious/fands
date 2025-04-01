@@ -1,0 +1,33 @@
+
+
+POST http://localhost:8000/bands/
+# POST http://127.0.0.1:8000/bands/
+Content-Type: application/json
+
+{
+  "name": "Boards of Canada",
+  "genre": "Electronic",
+  "albums": [
+  {
+    "title": "Tomorrow's Harvest",
+    "release_date": "2013-01-01"
+  },
+  {
+    "title": "Music Has the Right to Children",
+    "release_date": "1998-01-01"
+  }
+]
+}
+
+
+###
+
+GET http://localhost:8000/bands/
+
+
+
+### 
+GET http://localhost:8000/bands?genre=electronic
+
+### 
+GET http://localhost:8000/bands?genre=rock&albums=true
