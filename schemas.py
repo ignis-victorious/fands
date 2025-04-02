@@ -8,7 +8,7 @@ from enum import Enum
 
 
 #  Import FILES
-from data import BANDS
+# from data import BANDS
 #  __________________
 
 
@@ -54,7 +54,7 @@ class BandBase(BaseModel):
 
 class BandCreate(BandBase):
     @field_validator("genre", mode="before")
-    # @classmethod
+    @classmethod
     def title_case_genre(cls, value) -> str:
         return value.title()
 
